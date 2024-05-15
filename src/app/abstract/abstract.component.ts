@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import gsap from "gsap";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
@@ -27,12 +26,7 @@ export class AbstractComponent implements OnInit {
       return;
     }
     const scene = new THREE.Scene;
-  
-    const geometry = new THREE.SphereGeometry(3, 64, 64);
-    const material = new THREE.MeshStandardMaterial({
-      color: '#00ff83',
-      roughness: 0.5,
-    })
+    
     const torus = new THREE.Mesh(
       new THREE.TorusGeometry(1, 0.3, 100, 100),
       new THREE.ShaderMaterial({
