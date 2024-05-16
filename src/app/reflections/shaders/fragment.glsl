@@ -13,9 +13,11 @@ export default /*glsl*/ `
 
 		float edge = 1.0 - min( min( edge3.x, edge3.y ), edge3.z );
 
-		gl_FragColor.rgb = gl_FrontFacing ? vec3( 0.9, 0.9, 1.0 ) : vec3( 0.4, 0.4, 0.5 ) * vNormal;
-		gl_FragColor.a = gl_FrontFacing ? edge : 1.0;
+		vec3 normalColor = vec3( 0.4, 0.4, 0.5 ) * vNormal;
+		//gl_FragColor.rgb = bool(edge) ? vec3( 0.9, 0.9, 1.0 ) : normalColor;
+		vec3 grayScaleColor = vec3((normalColor.x + normalColor.y + normalColor.z)/3.0);
+		gl_FragColor.rgb = bool(edge) ? vec3( 0.9, 0.9, 1.0 ) : grayScaleColor;
 
-		//gl_FragColor = vec4(vNormal, 1.0);
+		gl_FragColor.a = gl_FrontFacing ? 1.0 : 0.0;
 	}
 `;
