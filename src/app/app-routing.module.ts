@@ -5,6 +5,7 @@ import { AbstractComponent } from './abstract/abstract.component';
 import { HomeComponent } from './home/home.component';
 import { GradientsComponent } from './gradients/gradients.component';
 import { CartoonComponent } from './cartoon/cartoon.component';
+import { ReflectionsComponent } from './reflections/reflections.component';
 
 
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'test', component: CanvasBoxComponent },
   { path: 'abstract', component: AbstractComponent },
   { path: 'gradient', component: GradientsComponent },
-  { path: 'cartoon', component: CartoonComponent }
+  { path: 'cartoon', component: CartoonComponent },
+  { path: 'reflection', component: ReflectionsComponent }
 ];
 
 @NgModule({
