@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { ImprovedNoise } from 'three/examples/jsm/math/ImprovedNoise';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import * as THREE from 'three';
 
@@ -9,6 +9,12 @@ import * as THREE from 'three';
 import vertexShader from './shaders/vertex.glsl';
 // @ts-ignore
 import fragmentShader from './shaders/fragment.glsl';
+
+
+// @ts-ignore
+//import vertexShader from './shaders/test2.glsl';
+// @ts-ignore
+//import fragmentShader from './shaders/test.glsl';
 
 @Component({
   selector: 'app-reflections',
@@ -49,7 +55,7 @@ export class ReflectionsComponent implements OnInit {
     }
 
     const icosahedron = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1,1),
+      new THREE.IcosahedronGeometry(1, 2),
       new THREE.ShaderMaterial({
         vertexShader,
         fragmentShader,
@@ -62,6 +68,18 @@ export class ReflectionsComponent implements OnInit {
       })
     )
     setupAttributes(icosahedron.geometry);
+
+    // Inspired by https://discourse.threejs.org/t/change-vertex-position-over-time/31309
+    let radius = 2;
+    let nPos = [];
+    let v3 = new THREE.Vector3();
+    let pos = icosahedron.geometry.attributes['position'];
+    for (let i = 0; i < pos.count; i++){
+      v3.fromBufferAttribute(pos, i).normalize();
+      nPos.push(v3.clone());
+    }
+    icosahedron.geometry.userData['nPos'] = nPos;
+
     scene.add(icosahedron);
 
     //Sizes
@@ -108,10 +126,17 @@ export class ReflectionsComponent implements OnInit {
     });
 
     const clock = new THREE.Clock();
+    let noise = new ImprovedNoise();
 
     const loop = () => {
-      //const elapsedTime = clock.getElapsedTime();
-      //torus.material.uniforms['uTime'].value = elapsedTime;
+      const elapsedTime = clock.getElapsedTime();
+      icosahedron.geometry.userData['nPos'].forEach((p: THREE.Vector3, idx: number) => {
+        let ns = noise.noise(p.x + elapsedTime * 0.25, p.y + elapsedTime * 0.25, p.z + elapsedTime * 0.25);
+        v3.copy(p).multiplyScalar(radius).addScaledVector(p, ns);
+        pos.setXYZ(idx, v3.x, v3.y, v3.z);
+      })
+      icosahedron.geometry.computeVertexNormals();
+      pos.needsUpdate = true;
       composer.render();
       controls.update();
       requestAnimationFrame(loop);
