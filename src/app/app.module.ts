@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AbstractComponent } from './abstract/abstract.component';
 import { HomeComponent } from './home/home.component';
 import { GradientsComponent } from './gradients/gradients.component';
+import { CartoonComponent } from './cartoon/cartoon.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { GradientsComponent } from './gradients/gradients.component';
     CanvasBoxComponent,
     AbstractComponent,
     HomeComponent,
-    GradientsComponent
+    GradientsComponent,
+    CartoonComponent
   ],
   imports: [
     BrowserModule,

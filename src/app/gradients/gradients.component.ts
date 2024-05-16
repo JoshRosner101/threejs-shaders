@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import * as THREE from 'three';
 
