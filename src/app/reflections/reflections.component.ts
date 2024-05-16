@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { ImprovedNoise } from 'three/examples/jsm/math/ImprovedNoise';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import * as THREE from 'three';
 
@@ -9,6 +10,11 @@ import * as THREE from 'three';
 import vertexShader from './shaders/vertex.glsl';
 // @ts-ignore
 import fragmentShader from './shaders/fragment.glsl';
+
+// @ts-ignore
+import backgroundVertexShader from './shaders/backgroundVertex.glsl';
+// @ts-ignore
+import backgroundFragmentShader from './shaders/backgroundFragment.glsl';
 
 
 // @ts-ignore
@@ -82,6 +88,15 @@ export class ReflectionsComponent implements OnInit {
 
     scene.add(icosahedron);
 
+    const plane = new THREE.Mesh(
+      new THREE.PlaneGeometry(window.innerWidth, window.innerHeight),
+      new THREE.ShaderMaterial({
+        vertexShader: backgroundVertexShader,
+        fragmentShader: backgroundFragmentShader
+      }));
+    plane.position.setZ(-5);
+    scene.add(plane);
+
     //Sizes
     const sizes = {
       width: window.innerWidth,
@@ -106,6 +121,15 @@ export class ReflectionsComponent implements OnInit {
 
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
+    /*
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(window.innerWidth, window.innerHeight),
+      0.35,
+      0.0001,
+      0.1
+    );
+    composer.addPass(bloomPass);
+    */
   
 
     //Controls
