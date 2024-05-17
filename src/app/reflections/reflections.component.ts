@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { ImprovedNoise } from 'three/examples/jsm/math/ImprovedNoise';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
+//import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import * as THREE from 'three';
 
@@ -61,7 +60,7 @@ export class ReflectionsComponent implements OnInit {
     }
 
     const icosahedron = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1, 2),
+      new THREE.IcosahedronGeometry(1, 5),
       new THREE.ShaderMaterial({
         vertexShader,
         fragmentShader,
@@ -73,6 +72,7 @@ export class ReflectionsComponent implements OnInit {
         alphaToCoverage: true
       })
     )
+    icosahedron.scale.set(0.75, 0.75, 0.75);
     setupAttributes(icosahedron.geometry);
 
     // Inspired by https://discourse.threejs.org/t/change-vertex-position-over-time/31309
@@ -124,19 +124,12 @@ export class ReflectionsComponent implements OnInit {
     /*
     const bloomPass = new UnrealBloomPass(
       new THREE.Vector2(window.innerWidth, window.innerHeight),
-      0.35,
-      0.0001,
-      0.1
+      0.001,
+      0.00000001,
+      0.01
     );
     composer.addPass(bloomPass);
     */
-  
-
-    //Controls
-    const controls = new OrbitControls(camera, canvas);
-    controls.enableDamping = true;
-    controls.enablePan = false;
-    //controls.enableZoom = false;
 
     //Resize
     window.addEventListener('resize', () => {
@@ -155,14 +148,13 @@ export class ReflectionsComponent implements OnInit {
     const loop = () => {
       const elapsedTime = clock.getElapsedTime();
       icosahedron.geometry.userData['nPos'].forEach((p: THREE.Vector3, idx: number) => {
-        let ns = noise.noise(p.x + elapsedTime * 0.25, p.y + elapsedTime * 0.25, p.z + elapsedTime * 0.25);
-        v3.copy(p).multiplyScalar(radius).addScaledVector(p, ns);
+        let ns = noise.noise((p.x + elapsedTime * 0.1) * 3.0, (p.y + elapsedTime * 0.1) * 3.0, (p.z + elapsedTime * 0.1) * 3.0);
+        v3.copy(p).multiplyScalar(radius).addScaledVector(p, ns * 0.5);
         pos.setXYZ(idx, v3.x, v3.y, v3.z);
       })
       icosahedron.geometry.computeVertexNormals();
       pos.needsUpdate = true;
       composer.render();
-      controls.update();
       requestAnimationFrame(loop);
     }
     loop();

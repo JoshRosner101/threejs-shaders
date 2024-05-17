@@ -15,3 +15,35 @@ body,html{
     left: 0;
     z-index: 1;
 }
+
+@font-face {
+    font-family: 'MegabyteMedium'; /*a name to be used later*/
+    src: url('../reflections/fonts/megabyteregular-webfont.woff2') format('woff2'),
+         url('../reflections/fonts/megabyteregular-webfont.woff') format('woff');
+}
+
+.title {
+    font-family: 'MegabyteMedium';
+    color: rgb(39, 39, 39);
+    z-index: 2;
+    position: absolute;
+    font-size: 3rem;
+    left: 50%;
+    top: 80%;
+    transform: translate(-46%, -50%);
+    letter-spacing: 20px;
+    font-size: 30px;
+}
+
+.subtitle {
+    font-family: 'MegabyteMedium';
+    color: rgb(39, 39, 39);
+    z-index: 2;
+    position: absolute;
+    font-size: 3rem;
+    left: 50%;
+    top: 85%;
+    transform: translate(-36%, -50%);
+    letter-spacing: 15px;
+    font-size: 20px;
+}
