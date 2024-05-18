@@ -25,8 +25,8 @@ struct ColorStop {
 void main() {
   ColorStop[] colors = ColorStop[](
     ColorStop(vec3(0.9607, 0.9529, 0.9529), 0.0),
-    ColorStop(vec3(0.8941, 0.9098, 0.9490), 0.5),
-    ColorStop(vec3(0.8157, 0.8471, 0.9059), 1.0)
+    ColorStop(vec3(0.8784, 0.7333, 0.2588), 0.5),
+    ColorStop(vec3(0.0, 0.2, 0.5765), 1.0)
   );
 
   vec3 finalColor;

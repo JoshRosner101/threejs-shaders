@@ -1,27 +1,13 @@
-# Testshaders
+# Threejs Shaders
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+This is a project I am using to learn how to code glsl shaders and the library three.js to display these shaders in a web browser. I am using Angular as a router to showcase the projects I have made. I also have another repository which consists of purely glsl shaders, which can be found [here](https://github.com/JoshRosner101/Shaders).
 
-## Development server
+This project can be run by running the command "npm install" in the src folder to install the dependencies and "npm run start" in the src folder to start the server, which can be found at localhost:4200.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tutorials
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Here is a list of the tutorials I have followed to create the projects listed under "Tutorials" on the homepage. These will be listed in order:
+1. [Introduction to three.js](https://www.youtube.com/watch?v=_OwJV2xL8M8)
+2. [Applying noise functions](https://www.youtube.com/watch?v=ixEPBzrhgTg)
+3. [Gradients](https://www.youtube.com/watch?v=Ydu4epKEM3I)
+4. [Cel shading](https://www.youtube.com/watch?v=V5UllFImvoE)
