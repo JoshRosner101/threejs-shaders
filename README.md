@@ -11,3 +11,4 @@ Here is a list of the tutorials I have followed to create the projects listed un
 2. [Applying noise functions](https://www.youtube.com/watch?v=ixEPBzrhgTg)
 3. [Gradients](https://www.youtube.com/watch?v=Ydu4epKEM3I)
 4. [Cel shading](https://www.youtube.com/watch?v=V5UllFImvoE)
+5. [Particles](https://www.youtube.com/watch?v=dLYMzNmILQA)

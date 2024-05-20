@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body,html{
+    font-family: 'Poppins';
+    font-size: 1rem;
+    color: white;
+}
+
+.canvas-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.container {
+    position:absolute;
+    z-index:1;
+    width: 99%;
+    height: 90vh;
+    display: grid;
+    place-content: center;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    padding-top: 3em;
+    position: relative;
+}
+
+.content:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid white;
+    transform: scaleX(1);
+}

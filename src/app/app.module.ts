@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { GradientsComponent } from './gradients/gradients.component';
 import { CartoonComponent } from './cartoon/cartoon.component';
 import { ReflectionsComponent } from './reflections/reflections.component';
+import { ParticlesComponent } from './particles/particles.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ReflectionsComponent } from './reflections/reflections.component';
     HomeComponent,
     GradientsComponent,
     CartoonComponent,
-    ReflectionsComponent
+    ReflectionsComponent,
+    ParticlesComponent
   ],
   imports: [
     BrowserModule,

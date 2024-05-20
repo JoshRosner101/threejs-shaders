@@ -6,15 +6,20 @@ import { HomeComponent } from './home/home.component';
 import { GradientsComponent } from './gradients/gradients.component';
 import { CartoonComponent } from './cartoon/cartoon.component';
 import { ReflectionsComponent } from './reflections/reflections.component';
+import { ParticlesComponent } from './particles/particles.component';
 
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  //Tutorials
   { path: 'test', component: CanvasBoxComponent },
   { path: 'abstract', component: AbstractComponent },
   { path: 'gradient', component: GradientsComponent },
   { path: 'cartoon', component: CartoonComponent },
+  { path: 'particles', component: ParticlesComponent },
+
+  //Original
   { path: 'reflection', component: ReflectionsComponent }
 ];
 
